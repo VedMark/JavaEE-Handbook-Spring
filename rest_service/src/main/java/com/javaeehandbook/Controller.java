@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @RestController
 @RequestMapping("javaeehandbook")
 @EntityScan(basePackages = {"com.javaeehandbook.model"})
@@ -24,8 +26,14 @@ public class Controller {
         this.repository = repository;
     }
 
+    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    public String getHello() {
+        return "Hello, world!";
+    }
+
     @RequestMapping(value = "technologies", method = RequestMethod.GET)
     public ResponseEntity<JavaEETechnology[]> getJavaEETechnologys() {
+        System.out.println("I'm here!");
         JavaEETechnology[] javaEETechnologies;
         try {
             Iterable<JavaEETechnology> iterator = repository.findAll();
