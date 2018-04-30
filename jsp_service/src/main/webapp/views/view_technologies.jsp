@@ -32,14 +32,14 @@
     <c:forEach items="${technologies}" var="t">
         <tr>
             <td>${t.name}</td>
-            <td>${t.versionForJava4}</td>
-            <td>${t.versionForJava5}</td>
-            <td>${t.versionForJava6}</td>
-            <td>${t.versionForJava7}</td>
-            <td>${t.versionForJava8}</td>
+            <td>${t.versions.versionForJava4}</td>
+            <td>${t.versions.versionForJava5}</td>
+            <td>${t.versions.versionForJava6}</td>
+            <td>${t.versions.versionForJava7}</td>
+            <td>${t.versions.versionForJava8}</td>
             <td>${t.description}</td>
-            <td><a href="javaeehandbook/update?id=${t.id}">Edit</a></td>
-            <td><a href="javaeehandbook/remove?id=${t.id}">Delete</a></td>
+            <td><a href="${pageContext.request.contextPath}/javaeehandbook/update?id=${t.id}">Edit</a></td>
+            <td><a href="${pageContext.request.contextPath}/javaeehandbook/remove?id=${t.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>

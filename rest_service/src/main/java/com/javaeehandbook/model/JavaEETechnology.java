@@ -2,8 +2,7 @@ package com.javaeehandbook.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "java_technologies", schema = "j2eehandbook")
+@Entity(name = "java_technologies")
 public class JavaEETechnology {
 
     @Id
@@ -15,8 +14,7 @@ public class JavaEETechnology {
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "used_versions_id")
-    @Column(name = "versions")
+    @JoinColumn(name = "versions")
     private JavaEETechnologyVersions versions;
 
     @Column(name = "description")

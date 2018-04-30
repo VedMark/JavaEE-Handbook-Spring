@@ -15,7 +15,7 @@
     <h3>Add Technology Form</h3>
 </div>
 
-<form:form method="POST" modelAttribute="technology" action="${pageContext.request.contextPath}/com.javaeehandbook/create">
+<form:form method="POST" modelAttribute="technology" action="${pageContext.request.contextPath}/javaeehandbook/create">
     <label> Name:
         <form:input type="text" path="name"/>
     </label>

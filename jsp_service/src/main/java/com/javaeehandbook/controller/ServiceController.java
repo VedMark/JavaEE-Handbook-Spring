@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,8 +35,13 @@ public class ServiceController {
 
     @RequestMapping(value = "technologies", method = RequestMethod.GET)
     public ModelAndView getTechnologies() {
-//        List<JavaEETechnology> technologies = database.getAll();
-        return new ModelAndView("view_technologies", "technologies", new ArrayList<JavaEETechnology>());
+        List<JavaEETechnology> technologies;
+        try {
+            technologies = database.getAll();
+        } catch (Exception e) {
+            return new ModelAndView("index", "errorMessage", e.getMessage());
+        }
+        return new ModelAndView("view_technologies", "technologies", technologies);
     }
 
     @RequestMapping(value = "create", method = RequestMethod.GET)
@@ -46,24 +51,37 @@ public class ServiceController {
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public ModelAndView addTechnologyPOST(@ModelAttribute("technology") JavaEETechnology technology) {
-        database.add(technology);
-        return new ModelAndView("view_technologies");
+        try {
+            database.add(technology);
+        } catch (Exception e) {
+            return new ModelAndView("index", "errorMessage", e.getMessage());
+        }
+        return new ModelAndView("redirect:technologies");
     }
 
     @RequestMapping(value = "update", method = RequestMethod.GET)
-    public ModelAndView updateTechnologyGet(@ModelAttribute("technology") JavaEETechnology technology) {
-        return new ModelAndView("edit_technology", "technology", technology);
+    public ModelAndView updateTechnologyGet(@RequestParam Integer id) {
+        return new ModelAndView("edit_technology", "technology", database.getById(id));
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public ModelAndView updateTechnologyPost(@ModelAttribute("technology") JavaEETechnology technology) {
-        database.update(technology);
-        return new ModelAndView("view_technologies");
+        try {
+            database.update(technology);
+        } catch (Exception e) {
+            return new ModelAndView("index", "errorMessage", e.getMessage());
+        }
+        return new ModelAndView("redirect:technologies");
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
-    public ModelAndView deleteTechnologyGet(@ModelAttribute("id") Integer id) {
-        database.delete(id);
-        return new ModelAndView("view_technologies");
+    public ModelAndView deleteTechnologyGet(@RequestParam Integer id) {
+        try {
+            database.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ModelAndView(    "index", "errorMessage", e.getMessage());
+        }
+        return new ModelAndView("redirect:technologies");
     }
 }

@@ -2,8 +2,7 @@ package com.javaeehandbook.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "used_versions", schema = "j2eehandbook")
+@Entity(name = "used_versions")
 public class JavaEETechnologyVersions {
 
     @Id

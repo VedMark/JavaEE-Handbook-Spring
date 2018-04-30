@@ -7,10 +7,10 @@
         <a href="javascript:void(0)" class="dropbtn", style="display: ${login_display}">Log in</a>
         <div class="dropdown-content">
             <a href="${pageContext.request.contextPath}/google.auth" title="Google">
-                <img src="<c:url value='/static/pictures/google_plus_logo.png'/>" alt="">
+                <img src='static/pictures/google_plus_logo.png'/>" alt="">
             </a>
             <a class="" href="${pageContext.request.contextPath}/github.auth" title="Github">
-                <img src="<c:url value='/static/pictures/github_logo.png'/>" alt="">
+                <img src='static/pictures/github_logo.png'/>" alt="">
             </a>
         </div>
     </li>
