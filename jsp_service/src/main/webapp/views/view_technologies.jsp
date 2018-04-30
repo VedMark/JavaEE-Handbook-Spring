@@ -13,11 +13,11 @@
 <%@include file="_menu.jsp" %>
 <%@include file="_header.jsp" %>
 
-<div class="centered">
-    <h3>Java Enterprise Edition Technologies</h3>
+<div itemscope itemtype="http://schema.org/TechArticle">
+<h3 itemscope itemprop="articleSection" class="page_title">Content</h3>
 </div>
 
-<table border="1" width="90%">
+<table itemscope itemtype="http://schema.org/TechArticle" border="1" width="90%">
     <tr>
         <th>Name</th>
         <th>Version for Java 4</th>
@@ -25,7 +25,7 @@
         <th>Version for Java 6</th>
         <th>Version for Java 7</th>
         <th>Version for Java 8</th>
-        <th>Description</th>
+        <th itemprop="text">Description</th>
         <th colspan="2"></th>
     </tr>
 

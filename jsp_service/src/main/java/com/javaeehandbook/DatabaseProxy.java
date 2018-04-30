@@ -1,17 +1,22 @@
 package com.javaeehandbook;
 
 import com.javaeehandbook.model.JavaEETechnology;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
-@Service
+@Repository
 public class DatabaseProxy {
     private ResourceBundle resources = ResourceBundle.getBundle("rest");
 

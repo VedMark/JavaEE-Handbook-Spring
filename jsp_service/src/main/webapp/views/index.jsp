@@ -8,9 +8,13 @@
     <title>JavaEE Handbook</title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/TechArticle">
 <%@include file="_menu.jsp" %>
 <%@include file="_header.jsp" %>
+
+<span itemprop="description">
+Site contains information about Java Enterprise Edition technologies.
+</span>
 
 <div class="centered">
     <p class="error">${errorMessage}</p>

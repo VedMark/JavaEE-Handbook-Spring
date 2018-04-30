@@ -22,6 +22,22 @@ h2 {
     margin-bottom: 20px;
 }
 
+.page_title {
+    height: 55px;
+    padding: 5px;
+    float: left;
+    text-align: center;
+}
+
+.title_div {
+    height: 55px;
+    padding: 5px;
+}
+
+.title_div h2 {
+    float: left;
+}
+
 .href {
     color: white;
     background-color: #1b35b7;
@@ -52,6 +68,11 @@ h2 {
 table {
     border-collapse: collapse;
     width: 100%;
+}
+
+.main_table {
+    border: 1px;
+    width: 90%;
 }
 
 ul {

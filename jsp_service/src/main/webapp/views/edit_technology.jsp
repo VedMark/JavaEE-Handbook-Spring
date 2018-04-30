@@ -11,11 +11,10 @@
 <%@include file="_menu.jsp" %>
 <%@include file="_header.jsp" %>
 
-<div class="centered">
-    <h3>Edit Technology Form</h3>
-</div>
+<h3 class="page_title">Edit Technology Form</h3>
 
-<c:if test="${not empty technology}">
+<div>
+    <c:if test="${not empty technology}">
     <form method="POST" modelAttribute="technology" action="${pageContext.request.contextPath}/javaeehandbook/update">
         <input type="hidden" name="id" value="${technology.id}"/>
 
@@ -43,12 +42,14 @@
                    value="${ technology.versions.versionForJava8 != null ? technology.versions.versionForJava8 : "" }"/>
         </label>
         <label> Description
-            <textarea name="description" cols="40" rows="4">${technology.description != null ? technology.description : "" }</textarea>
+            <textarea name="description" cols="40"
+                      rows="4">${technology.description != null ? technology.description : "" }</textarea>
         </label>
         <div class="centered">
             <input type="submit" value="Submit"/>
         </div>
     </form>
+</div>
 </c:if>
 </body>
 </html>
