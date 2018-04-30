@@ -1,28 +1,17 @@
 package com.javaeehandbook.model;
 
-import javax.persistence.*;
-
-@Entity(name = "used_versions")
 public class JavaEETechnologyVersions {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "used_versions_id")
     private int id;
 
-    @Column(name = "java_4")
     private String versionForJava4;
 
-    @Column(name = "java_5")
     private String versionForJava5;
 
-    @Column(name = "java_6")
     private String versionForJava6;
 
-    @Column(name = "java_7")
     private String versionForJava7;
 
-    @Column(name = "java_8")
     private String versionForJava8;
 
 

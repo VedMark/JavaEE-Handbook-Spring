@@ -1,27 +1,17 @@
 package com.javaeehandbook.model;
 
-import javax.persistence.*;
-
-@Entity(name = "java_technologies")
 public class JavaEETechnology {
 
     public JavaEETechnology() {
         versions = new JavaEETechnologyVersions();
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tech_id")
     private int id;
 
-    @Column(name = "tech_name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "versions")
     private JavaEETechnologyVersions versions;
 
-    @Column(name = "description")
     private String description;
 
     public int getId() {
