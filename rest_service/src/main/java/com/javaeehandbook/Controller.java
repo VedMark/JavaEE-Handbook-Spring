@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 @RestController
 @RequestMapping("javaeehandbook")
 @EntityScan(basePackages = {"com.javaeehandbook.model"})
@@ -21,19 +19,17 @@ public class Controller {
 
     private Repository repository;
 
+    public Controller() {
+
+    }
+
     @Autowired
     public Controller(Repository repository) {
         this.repository = repository;
     }
 
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
-    public String getHello() {
-        return "Hello, world!";
-    }
-
     @RequestMapping(value = "technologies", method = RequestMethod.GET)
     public ResponseEntity<JavaEETechnology[]> getJavaEETechnologys() {
-        System.out.println("I'm here!");
         JavaEETechnology[] javaEETechnologies;
         try {
             Iterable<JavaEETechnology> iterator = repository.findAll();
@@ -49,7 +45,7 @@ public class Controller {
     public ResponseEntity<JavaEETechnology> getJavaEETechnologyById(@RequestParam Integer id) {
         JavaEETechnology[] javaEETechnologies;
         try {
-            Iterable<JavaEETechnology> iterator = repository.findAllById(Collections.singleton(id));
+            Iterable<JavaEETechnology> iterator = repository.findAll();
             javaEETechnologies = getJavaEETechnologiesArray(iterator);
             if(javaEETechnologies.length == 0) {
                 throw new Exception("Could not find technology entry");
@@ -81,17 +77,17 @@ public class Controller {
 
     @RequestMapping(value = "update", method = RequestMethod.PUT)
     public ResponseEntity<Void> changeJavaEETechnology(@RequestBody JavaEETechnology technology) {
-        ResponseEntity<Void> response;
+        ResponseEntity<Void> response = null;
         try{
-            Optional<JavaEETechnology> byId = repository.findById(technology.getId());
-            if (byId.isPresent()) {
-                JavaEETechnology old = byId.get();
-                repository.delete(old);
-                repository.save(technology);
-                response = new ResponseEntity<>(HttpStatus.OK);
-            } else {
-                response =  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
+//            Optional<JavaEETechnology> byId = repository.findById(technology.getId());
+//            if (byId.isPresent()) {
+//                JavaEETechnology old = byId.get();
+//                repository.delete(old);
+//                repository.save(technology);
+//                response = new ResponseEntity<>(HttpStatus.OK);
+//            } else {
+//                response =  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//            }
         } catch (Exception e) {
             e.printStackTrace();
             response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -102,7 +98,7 @@ public class Controller {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> removeJavaEETechnology(@RequestParam Integer id) {
         try {
-            repository.deleteById(id);
+//            repository.deleteById(id);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
