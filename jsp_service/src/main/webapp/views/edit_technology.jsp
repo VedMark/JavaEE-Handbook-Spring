@@ -11,7 +11,7 @@
 <%@include file="_menu.jsp" %>
 <%@include file="_header.jsp" %>
 
-<h3 class="page_title">Edit Technology Form</h3>
+<h3 class="centered">Edit Technology Form</h3>
 
 <div>
     <c:if test="${not empty technology}">
